@@ -1,6 +1,6 @@
 /** https://medium.com/coinmonks/getting-started-with-ethereum-blockchain-development-part-1-d6543b441bea */
 
-pragma solidity ^0.4.23;
+pragma solidity ^0.4.22;
 
 contract Counter {
     
