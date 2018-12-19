@@ -19,7 +19,7 @@ contract Counter {
         emit CounterDecrementedEvent(count);
     }
 
-    function getCount() public constant returns (int) {
+    function getCount() public view returns (int) {
         return count;
     }
 }
