@@ -2,9 +2,14 @@ const Wrestler = artifacts.require("Wrestler");
 
 contract('Wrestler test', async (accounts) => {
 
-  it("should assert true", async () => {
-    let instance = await Wrestler.deployed();
-    assert.isTrue(true);
+  let instance;
+
+  before(async () => {
+    instance = await Wrestler.deployed();
+  });
+
+  it("wrestler1 address should be set", async () => {
+    assert.equal(Wrestler.wrestler1, accounts[0]);
   });
 
 });
