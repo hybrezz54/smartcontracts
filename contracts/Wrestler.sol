@@ -42,11 +42,11 @@ contract Wrestler {
         require(!gameFinished && (msg.sender == wrestler1 || msg.sender == wrestler2), "Game is finished or contract invoked by other parties!");
 
         if (msg.sender == wrestler1) {
-            require(!wrestler1Played, "Wrestler 1 has already played!");
+            require(wrestler1Played == false, "Wrestler 1 has already played!");
             wrestler1Played = true;
             wrestler1Deposit = wrestler1Deposit + msg.value;
         } else {
-            require(!wrestler2Played, "Wrestler 2 has already played!");
+            require(wrestler2Played == false, "Wrestler 2 has already played!");
             wrestler2Played = true;
             wrestler2Deposit = wrestler1Deposit + msg.value;
         }
