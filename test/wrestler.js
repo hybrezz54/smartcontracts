@@ -8,6 +8,27 @@ contract('Wrestler', async (accounts) => {
     instance = await Wrestler.deployed();
   });
 
+  it("should not be able to withdraw ether", async () => {
+    let beforeWithdraw = web3.eth.getBalance(accounts[0]);
+    
+    // We try to use the function withdraw from the Wrestling contract
+    // It should revert because the wrestling isn't finished 
+    instance.withdraw({from: accounts[0]}).then(function (val) {
+      assert(false, "should revert");
+    }).catch(function (err) {
+      // We expect a "revert" exception from the VM, because the user 
+      // should not be able to withdraw ether
+      console.log('Error: ' + err);
+
+      // how much ether the account has after running the transaction
+      var afterWithdraw = web3.eth.getBalance(accounts[0]);
+      var diff = beforeWithdraw - afterWithdraw;
+
+      // The account paid for gas to execute the transaction
+      console.log('Difference: ' + web3.fromWei(diff, "ether"));
+    })
+  });
+
   it("wrestler1 should be set", async () => {
     let wrestler1 = await instance.wrestler1.call();
     assert.equal(wrestler1, accounts[0]);
