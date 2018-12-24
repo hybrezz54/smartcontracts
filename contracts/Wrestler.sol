@@ -45,7 +45,7 @@ contract Wrestler {
             require(wrestler1Played == false, "Wrestler 1 has already played!");
             wrestler1Played = true;
             wrestler1Deposit = wrestler1Deposit + msg.value;
-        } else {
+        } else if (msg.sender == wrestler2) {
             require(wrestler2Played == false, "Wrestler 2 has already played!");
             wrestler2Played = true;
             wrestler2Deposit = wrestler1Deposit + msg.value;

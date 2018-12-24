@@ -1,6 +1,6 @@
 const Counter = artifacts.require("Counter");
 
-contract('Counter test', async (accounts) => {
+contract('Counter', async (accounts) => {
 
     let instance;
 
@@ -20,9 +20,9 @@ contract('Counter test', async (accounts) => {
     });
 
     it("Should emit event on increment counter", async () => {
-        let reciept = await instance.incrementCounter({from: accounts[0]});
-        assert.equal(reciept.logs.length, 1);
-        assert.equal(reciept.logs[0].args.count, 2);
+        let receipt = await instance.incrementCounter({from: accounts[0]});
+        assert.equal(receipt.logs.length, 1);
+        assert.equal(receipt.logs[0].args.count, 2);
     });
 
     it("Should decrement counter", async () => {
@@ -33,9 +33,9 @@ contract('Counter test', async (accounts) => {
     });
 
     it("Should emit event on decrement counter", async () => {
-        let reciept = await instance.decrementCounter({from: accounts[0]});
-        assert.equal(reciept.logs.length, 1);
-        assert.equal(reciept.logs[0].args.count, 0);
+        let receipt = await instance.decrementCounter({from: accounts[0]});
+        assert.equal(receipt.logs.length, 1);
+        assert.equal(receipt.logs[0].args.count, 0);
     });
 
 });
